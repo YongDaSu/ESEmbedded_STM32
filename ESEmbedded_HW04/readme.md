@@ -10,5 +10,7 @@ Modify the following files and try to complete the ??????.
 Follow the steps above to build your program again.
 
 Exercise 2_volatile
+
 use and do not use the volatile,
+
 using the optimizaiton of compiler than observe the result of assembly code.
