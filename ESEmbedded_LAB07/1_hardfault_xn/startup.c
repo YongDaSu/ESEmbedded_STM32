@@ -37,13 +37,28 @@ void reset_handler(void)
 
 	set_sysclk_pll();
 
-	// test hardfault
+	
+	/***test hardfault***
+	execute from 0x40000000 If the branch to hard fault is successful, 
+	the red light will blink after the blue light has been blinking for 20 times;
+	if not, the green light will blink.
+	*/ 
 	blink_count(LED_BLUE, 20);
+	/*
+	void func(void);		//normal function
+	void (*func_ptr)(void); //function ptr
+	func_ptr = 0x40000000;
+	func_ptr();
+	*/
+	//1.
+	// void (*func_ptr)(void); //declare function ptr
+	// func_ptr = 0x40000000;
+	// func_ptr();
 
-	// execute from 0x40000000
-	??????
+	//2.
+	((void (*)(void))0x40000000)();
 
-	blink(LED_BLUE);
+	blink(LED_GREEN);
 }
 
 void nmi_handler(void)
